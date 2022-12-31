@@ -87,6 +87,28 @@ app.put('/students/:id', (req, res) => {
   })
 })
 
+// app.put - this one is to start a new day
+// attendence column will be emptied
+app.put('/students', (req, res) => {
+  console.log('req.params:', req.params);
+  console.log('req.body:', req.body);
+  
+  let newAttendance = req.body.attendance;
+
+  let sqlQuery = `
+    UPDATE "students"
+      SET "attendance"=$1
+    `
+  let sqlValues = [newAttendance];
+  pool.query(sqlQuery, sqlValues)
+  .then( (dbRes) => {
+    res.sendStatus(200);
+  }).catch( (dbErr) => {
+    console.log('Error in PUT /students', dbErr)
+    res.sendStatus(500);
+  })
+})
+
 app.listen(PORT, () => {
   console.log(`server is up and running at http://localhost:${PORT}`)
 })

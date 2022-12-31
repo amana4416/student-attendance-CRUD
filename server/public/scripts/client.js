@@ -7,6 +7,7 @@ function onReady() {
   $('#tableBody').on('click', '.deleteButton', deleteStudent)
   $('#tableBody').on('click', '.presentButton', presentStudent)
   $('#tableBody').on('click', '.absentButton', absentStudent)
+  $('.newDayButton').on('click', newDay)
 }
 
 
@@ -131,6 +132,7 @@ function presentStudent() {
     });
 }
 
+//function to mark students as absent - this will update dom and database
 function absentStudent() {
   console.log('student is absent');
   let idToUpdate = $(this).data().id;
@@ -146,4 +148,30 @@ function absentStudent() {
     }).catch((err) => {
       console.log("Error in PUT /student/:id ABSENT", err);
     });
+}
+
+//function so teachers can click button each morning to take attendance again
+//this will make it so the present and absent buttons appear again
+function newDay () {
+  console.log('its a new day!');
+  swal("Are you sure you want to restart attendance?", {
+    title: "New Day - Restart Attendance",
+    icon: "warning",
+    dangerMode: true,
+    buttons: true,
+  }).then((response) => {
+    if (response === true){
+      $.ajax({
+        method: 'PUT',
+        url: `/students`,
+        data: {
+          attendance: null,
+        },
+      }).then((res) => {
+          getStudents();
+        }).catch((err) => {
+          console.log("Error in PUT /studenst NEW DAY", err);
+        });
+    } 
+  })   
 }

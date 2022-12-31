@@ -30,3 +30,7 @@ DELETE FROM "students"
 UPDATE "students"
   SET "attendance"=$1
   WHERE "id"=$2;
+
+-- put
+UPDATE "students"
+  SET "attendance"=$1
