@@ -17,3 +17,7 @@ INSERT INTO "students"
 -- get
 SELECT * FROM "students"
 	ORDER BY "id";
+
+-- post
+INSERT INTO "students" ("name")
+  VALUES ($1);
