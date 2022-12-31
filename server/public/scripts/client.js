@@ -38,7 +38,7 @@ function getStudents() {
             <td>${student.name}</td>
             <td>${student.attendance}</td>
             <td>
-              <button data-id="${student.id}" class="deleteButton">Delete</button>
+              <button data-id="${student.id}" type="button" class="btn btn-danger deleteButton">Delete</button>
             </td>
           </tr>
         `)
@@ -49,7 +49,7 @@ function getStudents() {
             <td>${student.name}</td>
             <td>${student.attendance}</td>
             <td>
-              <button data-id="${student.id}" class="deleteButton">Delete</button>
+              <button data-id="${student.id}" type="button" class="btn btn-danger deleteButton">Delete</button>
             </td>
           </tr>
           `)
@@ -59,11 +59,11 @@ function getStudents() {
           <tr class="attendanceNotTaken">
             <td>${student.name}</td>
             <td>
-              <button data-id="${student.id}" class="presentButton">Present</button>
-              <button data-id="${student.id}" class="absentButton">Absent</button>
+              <button data-id="${student.id}" type="button" class="btn btn-success presentButton">Present</button>
+              <button data-id="${student.id}" type="button" class="btn btn-success absentButton">Absent</button>
             </td>
             <td>
-              <button data-id="${student.id}" class="deleteButton">Delete</button>
+              <button data-id="${student.id}" type="button" class="btn btn-danger deleteButton">Delete</button>
             </td>
         </tr>
         `)
