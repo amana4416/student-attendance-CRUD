@@ -53,7 +53,7 @@ This application can be utilized by teachers to keep track of their students' at
   - clicking 'present' or 'absent' to update student attendance for the day
   - clicking 'delete' to remove a student from the class (maybe a student had a schedule change and is no longer in the class or completely changed schools)
 4. New students can be added throughout the school year
-5. pressing the 'new day' button to start over attendance each day - this will bring back the 'present' and 'absent' buttons
+5. Pressing the 'new day' button to start over attendance each day - this will bring back the 'present' and 'absent' buttons
 
 
 ## License
