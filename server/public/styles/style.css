@@ -1,7 +1,20 @@
 body {
-  background-color: #fbf0f0;
+  background-color: #293241;
 }
 
 h1 {
-  color: #7c7575;
+  color: #E0FBFC;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 28px;
+}
+
+.card {
+  background-color: #98C1D9;
+}
+
+.submitButton {
+  background-color: #3D5A80;
+  color: #E0FBFC;
+  border: #3D5A80;
 }

@@ -1,15 +1,19 @@
 -- Table Schema Template:
-CREATE TABLE "some_thing" (
+CREATE TABLE "students" (
   "id" SERIAL PRIMARY KEY,
   "name" VARCHAR(500) NOT NULL,
-  "is_nifty" BOOLEAN
-);
+  "attendance" VARCHAR(500)
+  );
 
 -- Seed Data Template:
-INSERT INTO "some_thing"
-  ("name", "is_nifty")
+INSERT INTO "students"
+  ("name")
   VALUES
-  ('Gizmo', true),
-  ('Gadget', true),
-  ('Bits', true),
-  ('Bobs', false);
+  ('Aman'),
+  ('Ayan'),
+  ('Amira'),
+  ('Aaliyah');
+
+-- get
+SELECT * FROM "students"
+	ORDER BY "id";
