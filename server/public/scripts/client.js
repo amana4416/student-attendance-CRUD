@@ -4,6 +4,7 @@ function onReady() {
   console.log("hi. let's make a CRUD app.");
   getStudents()
   $('.submitButton').on('click', addStudent);
+  $('#tableBody').on('click', '.deleteButton', deleteStudent)
 }
 
 
@@ -34,7 +35,7 @@ function getStudents() {
             <td>${student.name}</td>
             <td>${student.attendance}</td>
             <td>
-              <button class="deleteButton">Delete</button>
+              <button data-id="${student.id}" class="deleteButton">Delete</button>
             </td>
           </tr>
         `)
@@ -45,7 +46,7 @@ function getStudents() {
             <td>${student.name}</td>
             <td>${student.attendance}</td>
             <td>
-              <button class="deleteButton">Delete</button>
+              <button data-id="${student.id}" class="deleteButton">Delete</button>
             </td>
           </tr>
           `)
@@ -59,7 +60,7 @@ function getStudents() {
               <button class="absentButton">Absent</button>
             </td>
             <td>
-              <button class="deleteButton">Delete</button>
+              <button data-id="${student.id}" class="deleteButton">Delete</button>
             </td>
         </tr>
         `)
@@ -85,3 +86,27 @@ function postStudent(newStudent) {
     console.log('something broke in POST /students', err);
   })
 }
+
+//function to delete students from the dom and database
+function deleteStudent() {
+  console.log('deleting a student');
+  let idToDelete = $(this).data().id;
+  swal("Are you sure you want to remove this student from the class?", {
+    title: "Remove Student",
+    icon: "warning",
+    dangerMode: true,
+    buttons: true,
+  }).then((response) => {
+    if (response === true){
+        $.ajax ({
+        method: 'DELETE',
+        url: `/students/${idToDelete}`
+        }).then ((res) => {
+        getStudents();
+        }).catch((err) => {
+        console.log('error in DELETE /students/:id', err);
+        })
+    } 
+  })
+}
+

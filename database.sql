@@ -21,3 +21,7 @@ SELECT * FROM "students"
 -- post
 INSERT INTO "students" ("name")
   VALUES ($1);
+
+-- delete
+DELETE FROM "students"
+  WHERE "id"=$1;
