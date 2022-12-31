@@ -3,7 +3,7 @@ const pg = require('pg');
 const Pool = pg.Pool;
 
 const pool = new Pool({
-  database: 'some_thing', // CHANGE THIS! 🖖
+  database: 'student_attendance', // CHANGE THIS! 🖖
   host: 'localhost',
   port: 5432,
 });
