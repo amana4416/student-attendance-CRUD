@@ -65,6 +65,27 @@ app.delete('/students/:id', (req, res) =>{
 })
 
 // app.put()
+app.put('/students/:id', (req, res) => {
+  console.log('req.params:', req.params);
+  console.log('req.body:', req.body);
+  
+  let idToUpdate = req.params.id;
+  let newAttendance = req.body.attendance;
+
+  let sqlQuery = `
+    UPDATE "students"
+      SET "attendance"=$1
+      WHERE "id"=$2;
+    `
+  let sqlValues = [newAttendance, idToUpdate];
+  pool.query(sqlQuery, sqlValues)
+  .then( (dbRes) => {
+    res.sendStatus(200);
+  }).catch( (dbErr) => {
+    console.log('Error in PUT /students/:id', dbErr)
+    res.sendStatus(500);
+  })
+})
 
 app.listen(PORT, () => {
   console.log(`server is up and running at http://localhost:${PORT}`)

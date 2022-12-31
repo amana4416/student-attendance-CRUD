@@ -5,12 +5,13 @@ function onReady() {
   getStudents()
   $('.submitButton').on('click', addStudent);
   $('#tableBody').on('click', '.deleteButton', deleteStudent)
+  $('#tableBody').on('click', '.presentButton', presentStudent)
 }
 
 
 //function to take input values and put them in an object
 function addStudent() {
-  console.log('adding a student');
+  console.log('adding a student to the class');
   let newName = $('input').val();
 
   let studentToSend = {
@@ -56,8 +57,8 @@ function getStudents() {
           <tr class="attendanceNotTaken">
             <td>${student.name}</td>
             <td>
-              <button class="presentButton">Present</button>
-              <button class="absentButton">Absent</button>
+              <button data-id="${student.id}" class="presentButton">Present</button>
+              <button data-id="${student.id}" class="absentButton">Absent</button>
             </td>
             <td>
               <button data-id="${student.id}" class="deleteButton">Delete</button>
@@ -110,3 +111,21 @@ function deleteStudent() {
   })
 }
 
+
+//function to mark students as present - this will update dom and database
+function presentStudent() {
+  console.log('student is present');
+  let idToUpdate = $(this).data().id;
+  console.log(idToUpdate);
+  $.ajax({
+    method: 'PUT',
+    url: `/students/${idToUpdate}`,
+    data: {
+      attendance: 'Present',
+    },
+  }).then((res) => {
+      getStudents();
+    }).catch((err) => {
+      console.log("Error in PUT /student/:id PRESENT", err);
+    });
+}
