@@ -26,10 +26,24 @@
               <input type="text" placeholder="Student Name" class="form-control shadow">
             </div>
             <div class="col">
-              <button type="button" class="btn btn-primary submitButton" style="float:right;" >Submit</button>
+              <button type="button" class="btn btn-primary submitButton" >Submit</button>
             </div>
           </div>
         </section>
+
+        <section id="studentTable">
+          <table class="table table-borderless">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Present</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody id="students">
+              <!-- books will append here -->
+            </tbody>
+        </table>
       </div>
     </div>
   </main>
