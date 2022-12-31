@@ -6,6 +6,7 @@ function onReady() {
   $('.submitButton').on('click', addStudent);
   $('#tableBody').on('click', '.deleteButton', deleteStudent)
   $('#tableBody').on('click', '.presentButton', presentStudent)
+  $('#tableBody').on('click', '.absentButton', absentStudent)
 }
 
 
@@ -127,5 +128,22 @@ function presentStudent() {
       getStudents();
     }).catch((err) => {
       console.log("Error in PUT /student/:id PRESENT", err);
+    });
+}
+
+function absentStudent() {
+  console.log('student is absent');
+  let idToUpdate = $(this).data().id;
+  console.log(idToUpdate);
+  $.ajax({
+    method: 'PUT',
+    url: `/students/${idToUpdate}`,
+    data: {
+      attendance: 'Absent',
+    },
+  }).then((res) => {
+      getStudents();
+    }).catch((err) => {
+      console.log("Error in PUT /student/:id ABSENT", err);
     });
 }

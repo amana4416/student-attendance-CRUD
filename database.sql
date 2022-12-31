@@ -25,3 +25,8 @@ INSERT INTO "students" ("name")
 -- delete
 DELETE FROM "students"
   WHERE "id"=$1;
+
+-- put
+UPDATE "students"
+  SET "attendance"=$1
+  WHERE "id"=$2;
